@@ -12,7 +12,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Hello world!
@@ -32,7 +31,7 @@ public class App {
         userInterface.showInputMessage(FILE_NAME_MESSAGE);
         String fileNameFromUser = userInterface.getStringFromUser(reader);
         List<Path> resultFileList = new ArrayList<>();
-        if (stringChecker.isStringDirectoryPath(pathFromUser) && stringChecker.isStringValidPartFileNAme(fileNameFromUser) && Files.isDirectory(Path.of(pathFromUser))) {
+        if (stringChecker.isStringDirectoryPath(pathFromUser) && stringChecker.isStringValidPartFileName(fileNameFromUser) && Files.isDirectory(Path.of(pathFromUser))) {
             IFind fileFinder = new FileFinder();
             try {
                 resultFileList = new ArrayList<>(fileFinder.getFilesPathListByPartName(fileNameFromUser, pathFromUser));

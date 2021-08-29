@@ -18,7 +18,7 @@ public class StringChecker implements IStringCheck {
     }
 
     @Override
-    public boolean isStringValidPartFileNAme(String fileNamePart) throws StringCheckerException {
+    public boolean isStringValidPartFileName(String fileNamePart) throws StringCheckerException {
         String regexp = "[^&<>|#:;*?^\\/]*";
         return isStringValidPattern(fileNamePart, regexp, BAD_FORMAT_FILE_NAME_MESSAGE);
     }

@@ -32,7 +32,7 @@ public class App {
         String fileNameFromUser = userInterface.getStringFromUser(reader);
         List<Path> resultFileList = new ArrayList<>();
         if (stringChecker.isStringDirectoryPath(pathFromUser) && stringChecker.isStringValidPartFileName(fileNameFromUser) && Files.isDirectory(Path.of(pathFromUser))) {
-            IFind fileFinder = new FileFinder();
+            IFileFind fileFinder = new FileFinder();
             try {
                 resultFileList = new ArrayList<>(fileFinder.getFilesPathListByPartName(fileNameFromUser, pathFromUser));
             } catch (IOException e) {

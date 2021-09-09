@@ -23,6 +23,6 @@ public class FileFinder implements IFileFind {
 
     @Override // нет реализации так как отрабатываем Mock
     public List<Path> getFilesContainedText(String content) {
-        return new ArrayList<Path>();
+        return new ArrayList<>();
     }
 }

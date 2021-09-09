@@ -8,6 +8,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -19,14 +20,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @ExtendWith(MockitoExtension.class)
 class FileFinderTest {
 
+    public static final String SRC_TEST_RESOURCES_FILE_FOR_TEST = "\\src\\test\\resources\\fileForTest";
     List<Path> pathList;
-
+    String rootPath = new File("").getAbsolutePath();
     @InjectMocks
     FileFinder fileFinder;
 
     @BeforeEach
     void initPathList() {
-        Path expectedPath = Paths.get("/home/sever/WorkingEPAM/FileFinderUnit5/src/main/resources/projectResources");
+        String pathToResourcesDirectory = rootPath + SRC_TEST_RESOURCES_FILE_FOR_TEST;
+        Path expectedPath = Paths.get(pathToResourcesDirectory);
         pathList = new ArrayList<>();
         pathList.add(expectedPath);
     }
@@ -37,7 +40,7 @@ class FileFinderTest {
         //GIVEN
         List<Path> expected = pathList;
         //WHEN
-        List<Path> actual = fileFinder.getFilesPathListByPartName("project", "/home/sever/WorkingEPAM/FileFinderUnit5/src/main/resources/projectResources");
+        List<Path> actual = fileFinder.getFilesPathListByPartName("file", rootPath + SRC_TEST_RESOURCES_FILE_FOR_TEST);
         //THEN
         assertEquals(expected, actual);
     }

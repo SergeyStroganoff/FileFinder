@@ -18,14 +18,13 @@ class IStringCheckTest {
 
     @BeforeEach
     void setUp() {
-
     }
 
     @InjectMocks
     StringChecker stringChecker;
 
     @Test
-    void isStringDirectoryPathTest_Mast_Return_True() throws StringCheckerException {
+    void isStringDirectoryPathTest_Must_Return_True() throws StringCheckerException {
         //given
         testString = "C:\\fgh12";
         //when
@@ -36,7 +35,7 @@ class IStringCheckTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"C:\\fgh*12", ":\\fgh[]67!12"})
-    void isStringDirectoryPathTest_Mast_Throw_StringCheckException(String argument) throws StringCheckerException {
+    void isStringDirectoryPathTest_Must_Throw_StringCheckException(String argument) throws StringCheckerException {
         //given
         testString = argument;
         //when
@@ -45,7 +44,7 @@ class IStringCheckTest {
     }
 
     @Test
-    void isStringValidPartFileName_Mast_Return_True() throws StringCheckerException {
+    void isStringValidPartFileName_Must_Return_True() throws StringCheckerException {
         //given
         testString = "stringTest";
         //when
@@ -56,10 +55,10 @@ class IStringCheckTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"C:\\fgh*12", ":\\fgh[]67!12"})
-    void isStringValidPartFileName_Mast_Throw_StringCheckerException(String argument) {
+    void isStringValidPartFileName_Must_Throw_StringCheckerException(String argument) {
         //given
         testString = argument;
-        //when
+        //when strings = {"C:\\fgh*12", ":\\fgh[]67!12"}
         //then
         Assertions.assertThrows(StringCheckerException.class, () -> stringChecker.isStringDirectoryPath(testString));
 

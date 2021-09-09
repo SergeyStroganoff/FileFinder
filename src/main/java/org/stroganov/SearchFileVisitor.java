@@ -10,13 +10,12 @@ import java.util.List;
 
 public class SearchFileVisitor extends SimpleFileVisitor<Path> {
 
+    private boolean condition;
     private String partOfName;
     private final List<Path> foundedFilesList = new ArrayList<>();
-
     public void setPartOfName(String partOfName) {
         this.partOfName = partOfName;
     }
-
     public List<Path> getFoundedFilesList() {
         return foundedFilesList;
     }

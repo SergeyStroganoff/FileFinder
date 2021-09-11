@@ -47,12 +47,13 @@ class FileFinderTest {
 
     @Test
     void getFilesListContainedTextAsParameter_ReturnListOfPaths() {
-        //GIVEN
+        // GIVEN
         List<Path> expected = pathList;
         fileFinder = Mockito.mock(FileFinder.class);
         Mockito.when(fileFinder.getFilesContainedText("fg")).thenReturn(expected);
-        //WHEN
+        // WHEN
         List<Path> actual = fileFinder.getFilesContainedText("fg");
+        // THEN
         assertEquals(expected, actual);
     }
 }

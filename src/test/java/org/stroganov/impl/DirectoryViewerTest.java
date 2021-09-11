@@ -26,14 +26,14 @@ class DirectoryViewerTest {
     @Test
     void getDirectoryListTest_Return_ListOfFiles_In_ResourcesDirectory() throws IOException {
 
-        //GIVEN
+        // GIVEN
         String rootPath = new File("").getAbsolutePath();
         String pathToResourcesDirectory = rootPath + "\\" + DIRECTORY_IN_PROJECT_FOR_TEST + "\\" + NAME_OF_EXISTING_SEARCH_FILE;
         Path expectedPath = Paths.get(pathToResourcesDirectory);
         List<Path> expectedList = new ArrayList<>(Arrays.asList(expectedPath));
-        //WHEN
+        // WHEN
         List<Path> actual = fileFinder.getFilesPathListByPartName(null, rootPath + DIRECTORY_IN_PROJECT_FOR_TEST);
-        //THEN
+        // THEN
         assertEquals(expectedList, actual);
 
     }

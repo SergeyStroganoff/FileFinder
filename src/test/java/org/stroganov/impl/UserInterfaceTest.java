@@ -22,29 +22,29 @@ class UserInterfaceTest {
 
     @Test
     void getStringFromUser_Return_TestString() throws IOException {
-        //GIVEN
+        // GIVEN
         String expectedString = "test";
         BufferedReader reader = Mockito.mock(BufferedReader.class);
         Mockito.when(reader.readLine()).thenReturn("test");
         // WHEN
         String actualString = userInterface.getStringFromUser(reader);
-        //THEN
+        // THEN
         assertEquals(expectedString, actualString);
 
     }
 
     @Test
     void showInputMessage_System_out_PrintLn_Used() {
-        //GIVEN
+        // GIVEN
         byte[] expected = "Введите в терминале \n".getBytes();
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         PrintStream printStream = new PrintStream(bos, true);
         PrintStream oldStream = System.out;
         System.setOut(printStream);
-        //WHEN
+        // WHEN
         userInterface.showInputMessage("");
         byte[] actualString = bos.toString().getBytes();
-        //THEN
+        // THEN
         assertArrayEquals(expected, actualString);
         System.setOut(oldStream);
 
@@ -52,32 +52,32 @@ class UserInterfaceTest {
 
     @Test
     void showOutputMessage_System_out_PrintLn_Used() {
-        //GIVEN
+        // GIVEN
         byte[] expected = "Результат поиска файлов:\n\n".getBytes();
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         PrintStream printStream = new PrintStream(bos, true);
         PrintStream oldStream = System.out;
         System.setOut(printStream);
-        //WHEN
+        // WHEN
         userInterface.showOutputMessage("");
         byte[] actualString = bos.toString().getBytes();
-        //THEN
+        // THEN
         assertArrayEquals(expected, actualString);
         System.setOut(oldStream);
     }
 
     @Test
     void showErrorMessage_System_out_PrintLn_Used() {
-        //GIVEN
+        // GIVEN
         byte[] expected = "Произошла ошибка: \n".getBytes();
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         PrintStream printStream = new PrintStream(bos, true);
         PrintStream oldStream = System.out;
         System.setOut(printStream);
-        //WHEN
+        // WHEN
         userInterface.showErrorMessage("");
         byte[] actualString = bos.toString().getBytes();
-        //THEN
+        // THEN
         assertArrayEquals(expected, actualString);
         System.setOut(oldStream);
     }

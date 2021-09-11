@@ -45,21 +45,21 @@ class IStringCheckTest {
 
     @Test
     void isStringValidPartFileName_Must_Return_True() throws StringCheckerException {
-        //given
+        // given
         testString = "stringTest";
-        //when
+        // when
         boolean actual = stringChecker.isStringValidPartFileName(testString);
-        //then
+        // then
         Assertions.assertTrue(actual);
     }
 
     @ParameterizedTest
     @ValueSource(strings = {"C:\\fgh*12", ":\\fgh[]67!12"})
     void isStringValidPartFileName_Must_Throw_StringCheckerException(String argument) {
-        //given
+        // given
         testString = argument;
-        //when strings = {"C:\\fgh*12", ":\\fgh[]67!12"}
-        //then
+        // when strings = {"C:\\fgh*12", ":\\fgh[]67!12"}
+        // then
         Assertions.assertThrows(StringCheckerException.class, () -> stringChecker.isStringDirectoryPath(testString));
 
     }

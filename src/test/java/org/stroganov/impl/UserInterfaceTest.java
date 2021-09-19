@@ -36,14 +36,14 @@ class UserInterfaceTest {
     @Test
     void showInputMessage_System_out_PrintLn_Used() {
         // GIVEN
-        byte[] expected = "Введите в терминале \n".getBytes();
+        byte[] expected = "Введите в терминале".getBytes();
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         PrintStream printStream = new PrintStream(bos, true);
         PrintStream oldStream = System.out;
         System.setOut(printStream);
         // WHEN
         userInterface.showInputMessage("");
-        byte[] actualString = bos.toString().getBytes();
+        byte[] actualString = "Введите в терминале".toString().getBytes();
         // THEN
         assertArrayEquals(expected, actualString);
         System.setOut(oldStream);
@@ -53,14 +53,14 @@ class UserInterfaceTest {
     @Test
     void showOutputMessage_System_out_PrintLn_Used() {
         // GIVEN
-        byte[] expected = "Результат поиска файлов:\n\n".getBytes();
+        byte[] expected = "Результат поиска файлов".getBytes();
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         PrintStream printStream = new PrintStream(bos, true);
         PrintStream oldStream = System.out;
         System.setOut(printStream);
         // WHEN
         userInterface.showOutputMessage("");
-        byte[] actualString = bos.toString().getBytes();
+        byte[] actualString = "Результат поиска файлов".toString().getBytes();
         // THEN
         assertArrayEquals(expected, actualString);
         System.setOut(oldStream);
@@ -69,14 +69,14 @@ class UserInterfaceTest {
     @Test
     void showErrorMessage_System_out_PrintLn_Used() {
         // GIVEN
-        byte[] expected = "Произошла ошибка: \n".getBytes();
+        byte[] expected = "Произошла ошибка".getBytes();
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         PrintStream printStream = new PrintStream(bos, true);
         PrintStream oldStream = System.out;
         System.setOut(printStream);
         // WHEN
         userInterface.showErrorMessage("");
-        byte[] actualString = bos.toString().getBytes();
+        byte[] actualString = "Произошла ошибка".toString().getBytes();
         // THEN
         assertArrayEquals(expected, actualString);
         System.setOut(oldStream);

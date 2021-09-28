@@ -17,6 +17,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @ExtendWith(MockitoExtension.class)
 class UserInterfaceTest {
 
+    public static final String TEST_STRING = "Результат поиска файлов";
+    public static final String INPUT_TEST_STRING = "Введите в терминале";
+    public static final String ERROR_TEST_STRING = "Произошла ошибка";
     @InjectMocks
     UserInterface userInterface;
 
@@ -30,20 +33,19 @@ class UserInterfaceTest {
         String actualString = userInterface.getStringFromUser(reader);
         // THEN
         assertEquals(expectedString, actualString);
-
     }
 
     @Test
     void showInputMessage_System_out_PrintLn_Used() {
         // GIVEN
-        byte[] expected = "Введите в терминале".getBytes();
+        byte[] expected = INPUT_TEST_STRING.getBytes();
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         PrintStream printStream = new PrintStream(bos, true);
         PrintStream oldStream = System.out;
         System.setOut(printStream);
         // WHEN
         userInterface.showInputMessage("");
-        byte[] actualString = "Введите в терминале".toString().getBytes();
+        byte[] actualString = INPUT_TEST_STRING.getBytes();
         // THEN
         assertArrayEquals(expected, actualString);
         System.setOut(oldStream);
@@ -53,14 +55,14 @@ class UserInterfaceTest {
     @Test
     void showOutputMessage_System_out_PrintLn_Used() {
         // GIVEN
-        byte[] expected = "Результат поиска файлов".getBytes();
+        byte[] expected = TEST_STRING.getBytes();
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         PrintStream printStream = new PrintStream(bos, true);
         PrintStream oldStream = System.out;
         System.setOut(printStream);
         // WHEN
         userInterface.showOutputMessage("");
-        byte[] actualString = "Результат поиска файлов".toString().getBytes();
+        byte[] actualString = TEST_STRING.getBytes();
         // THEN
         assertArrayEquals(expected, actualString);
         System.setOut(oldStream);
@@ -69,14 +71,14 @@ class UserInterfaceTest {
     @Test
     void showErrorMessage_System_out_PrintLn_Used() {
         // GIVEN
-        byte[] expected = "Произошла ошибка".getBytes();
+        byte[] expected = ERROR_TEST_STRING.getBytes();
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
         PrintStream printStream = new PrintStream(bos, true);
         PrintStream oldStream = System.out;
         System.setOut(printStream);
         // WHEN
         userInterface.showErrorMessage("");
-        byte[] actualString = "Произошла ошибка".toString().getBytes();
+        byte[] actualString = ERROR_TEST_STRING.getBytes();
         // THEN
         assertArrayEquals(expected, actualString);
         System.setOut(oldStream);
